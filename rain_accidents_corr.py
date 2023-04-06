@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('/Users/benjaminang/Desktop/Europe Regional 2023 Datasets/Crashes/crash_info_general.csv',
+df = pd.read_csv('Europe Regional 2023 Datasets/Crashes/crash_info_general.csv',
                  usecols=['CRN', 'ROAD_CONDITION', 'WEATHER1', 'FATAL_COUNT', 'INJURY_COUNT'])
 
 # Rainy days
