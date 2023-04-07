@@ -1,4 +1,4 @@
-# Are there any road properties (intersections, location types, travel directions, road condition), weather conditions or times of day that have a higher incidence of fatal crashes? Can we use predictive modeling to identify these high-risk areas and suggest road repair or redesign to mitigate the risks?
+# Are there any road properties (intersections, location types, road condition), weather conditions or times of day that have a higher incidence of fatal crashes? Can we use predictive modeling to identify these high-risk areas and suggest road repair or redesign to mitigate the risks?
 
 
 
@@ -7,15 +7,12 @@ library(dplyr)
 library(car)
 
 gen.dat<-read.csv("crash_info_general.csv", header=T)
-vehicle.dat<-read.csv("crash_info_vehicles.csv", header=T)
-
-merged.dat <- merge(gen.dat, vehicle.dat, by = "CRN", all.x = TRUE)
 
 
 merged.dat <- subset(merged.dat, select=c(BELTED_DEATH_COUNT, BICYCLE_DEATH_COUNT, CHLDPAS_DEATH_COUNT, MCYCLE_DEATH_COUNT,
                                           NONMOTR_DEATH_COUNT, PED_DEATH_COUNT, UNB_DEATH_COUNT,
                                           WEATHER1, WEATHER2, INTERSECT_TYPE,
-                                          INTERSECTION_RELATED, TRAVEL_DIRECTION, TIME_OF_DAY,
+                                          INTERSECTION_RELATED, TIME_OF_DAY,
                                           ROAD_CONDITION))
 merged.dat$WEATHER1 <- as.factor(merged.dat$WEATHER1)
 table(merged.dat$WEATHER1)
@@ -28,10 +25,6 @@ class(merged.dat$WEATHER2)
 merged.dat$INTERSECT_TYPE <- as.factor(merged.dat$INTERSECT_TYPE)
 table(merged.dat$INTERSECT_TYPE)
 class(merged.dat$INTERSECT_TYPE)
-
-merged.dat$TRAVEL_DIRECTION <- as.factor(merged.dat$TRAVEL_DIRECTION)
-table(merged.dat$TRAVEL_DIRECTION)
-class(merged.dat$TRAVEL_DIRECTION)
 
 # Convert to factor variable
 merged.dat$INTERSECTION_RELATED <- as.factor(merged.dat$INTERSECTION_RELATED)
@@ -52,7 +45,7 @@ merged.dat <- merged.dat %>%
 
 # Fit a logistic regression model
 model1 <- glm(fatal ~ WEATHER1 + WEATHER2 + INTERSECT_TYPE + 
-               INTERSECTION_RELATED + TRAVEL_DIRECTION + TIME_OF_DAY + ROAD_CONDITION, 
+               INTERSECTION_RELATED + TIME_OF_DAY + ROAD_CONDITION, 
              data = merged.dat, family = binomial(link="logit"))
 
 # Print the model summary
