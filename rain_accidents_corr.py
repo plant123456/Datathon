@@ -2,7 +2,7 @@ import pandas as pd
 
 # Initialises the dataframe for crashes
 crashes = pd.read_csv('dataset/Crashes/crash_info_general.csv',
-                 usecols=['CRN', 'ROAD_CONDITION', 'WEATHER1', 'FATAL_COUNT', 'INJURY_COUNT'])
+                 usecols=['CRN', 'ROAD_CONDITION', 'WEATHER1'])
 crashes.dropna(inplace=True)
 crashes.reset_index(drop=True)
 

@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import folium
 from folium.plugins import HeatMap
 
@@ -41,4 +40,4 @@ layer_control = folium.LayerControl()
 map_philadelphia.add_child(layer_control)
 
 # Save the map as an HTML file
-map_philadelphia.save('heatmap.html')
+map_philadelphia.save('heatmap_all_crashes.html')
