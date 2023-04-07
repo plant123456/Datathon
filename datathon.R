@@ -1,15 +1,13 @@
 # Are there any road properties (intersections, location types, road condition), weather conditions or times of day that have a higher incidence of fatal crashes? Can we use predictive modeling to identify these high-risk areas and suggest road repair or redesign to mitigate the risks?
 
-
-
 # Load the required library
 library(dplyr)
-library(car)
+
 
 gen.dat<-read.csv("crash_info_general.csv", header=T)
 
 
-merged.dat <- subset(merged.dat, select=c(BELTED_DEATH_COUNT, BICYCLE_DEATH_COUNT, CHLDPAS_DEATH_COUNT, MCYCLE_DEATH_COUNT,
+merged.dat <- subset(gen.dat, select=c(BELTED_DEATH_COUNT, BICYCLE_DEATH_COUNT, CHLDPAS_DEATH_COUNT, MCYCLE_DEATH_COUNT,
                                           NONMOTR_DEATH_COUNT, PED_DEATH_COUNT, UNB_DEATH_COUNT,
                                           WEATHER1, WEATHER2, INTERSECT_TYPE,
                                           INTERSECTION_RELATED, TIME_OF_DAY,
