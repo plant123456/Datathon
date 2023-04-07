@@ -4,7 +4,7 @@ import folium
 from folium.plugins import HeatMap
 
 # Load the data
-data = pd.read_csv('Europe Regional 2023 Datasets/Crashes/crash_info_general.csv', usecols=['DEC_LAT', 'DEC_LONG'])
+data = pd.read_csv('dataset/Crashes/crash_info_general.csv', usecols=['DEC_LAT', 'DEC_LONG'])
 data = data.replace('NaN', np.nan)
 data.dropna(inplace=True)
 data = data.reset_index(drop=True)
