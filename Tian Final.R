@@ -6,7 +6,6 @@ library(gbm)
 library(car)
 library(psych)  # Load the psych package for EFA
 library(heatmaply)
-library(broom)
 
 gen.dat<-read.csv("crash_info_general.csv", header=T)
 flag.dat<-read.csv("crash_info_flag_variables.csv", header=T)
